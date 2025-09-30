@@ -1,0 +1,25 @@
+# requirements.txt
+
+# Framework web
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+
+# IA y procesamiento
+openai>=1.0.0
+
+# Procesamiento de archivos
+pypdf>=3.0.0
+PyPDF2>=3.0.0
+openpyxl>=3.1.0
+
+# Configuración y entorno
+python-dotenv>=1.0.0
+pydantic-settings>=2.0.0
+
+# Utilidades
+python-multipart>=0.0.6
+aiofiles>=23.0.0
+
+# Testing (desarrollo)
+pytest>=7.0.0
+httpx>=0.25.0

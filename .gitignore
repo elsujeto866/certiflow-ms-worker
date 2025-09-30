@@ -1,0 +1,8 @@
+# .gitignore
+
+# Ignorar el entorno virtual llamado 'certiflow'
+certiflow/
+
+# Mantener las otras reglas
+__pycache__/
+.env
