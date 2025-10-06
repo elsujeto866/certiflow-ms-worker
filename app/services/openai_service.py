@@ -48,7 +48,8 @@ class OpenAIService:
                     {
                         "role": "system",
                         "content": "Eres un experto en extracción de información de documentos. "
-                                 "Debes extraer información relevante y estructurarla en formato JSON. "
+                                 "Debes extraer EXACTAMENTE estos campos: nombre, cédula, email, provincia, ciudad, dirección, teléfono, celular y edad. "
+                                 "Estructura la información en formato JSON con exactamente estos campos. "
                                  "Si no encuentras información específica, usa null."
                     },
                     {
@@ -96,15 +97,27 @@ class OpenAIService:
             str: Prompt construido
         """
         base_prompt = f"""
-Analiza el siguiente texto y extrae información relevante en formato JSON:
+Analiza el siguiente texto y extrae EXACTAMENTE estos datos en formato JSON:
 
 TEXTO:
 {text}
 
 INSTRUCCIONES:
-- Extrae información como: fechas, nombres de empresas, contactos, direcciones, números, etc.
-- Organiza la información de manera lógica en un objeto JSON
+- Extrae ÚNICAMENTE estos campos: nombre, cédula, email, provincia, ciudad, dirección, teléfono, celular, edad
+- El JSON debe tener exactamente esta estructura:
+{{
+    "nombre": "string o null",
+    "cedula": "string o null",
+    "email": "string o null", 
+    "provincia": "string o null",
+    "ciudad": "string o null",
+    "direccion": "string o null",
+    "telefono": "string o null",
+    "celular": "string o null",
+    "edad": "number o null"
+}}
 - Si no encuentras información específica, usa null
+- Para edad, usa número si es posible, sino null
 - Mantén los datos originales sin modificar
 """
         
@@ -115,6 +128,99 @@ INSTRUCCIONES:
         
         return base_prompt
     
+    def extract_personal_data(self, text: str) -> Dict[str, Any]:
+        """
+        Extrae datos personales específicos del texto usando OpenAI.
+        
+        Args:
+            text: Texto del cual extraer información personal
+            
+        Returns:
+            Dict con los datos personales extraídos
+            
+        Raises:
+            OpenAIError: Si hay error en la comunicación con OpenAI
+        """
+        try:
+            start_time = time.time()
+            logger.info("Iniciando extracción de datos personales con OpenAI")
+            
+            response = self.client.chat.completions.create(
+                model=self.model,
+                messages=[
+                    {
+                        "role": "system",
+                        "content": "Eres un experto en extracción de datos personales de documentos. "
+                                 "Extrae ÚNICAMENTE los siguientes campos: nombre, cédula, email, provincia, ciudad, dirección, teléfono, celular, edad. "
+                                 "Devuelve un JSON válido con exactamente estos campos."
+                    },
+                    {
+                        "role": "user",
+                        "content": f"""
+Extrae los siguientes datos del texto y devuélvelos en formato JSON:
+
+TEXTO:
+{text[:4000]}  
+
+Estructura JSON requerida:
+{{
+    "nombre": "string completo o null",
+    "cedula": "número de cédula o null",
+    "email": "correo electrónico o null",
+    "provincia": "provincia o null",
+    "ciudad": "ciudad o null", 
+    "direccion": "dirección completa o null",
+    "telefono": "teléfono fijo o null",
+    "celular": "número celular o null",
+    "edad": number o null
+}}
+
+IMPORTANTE: 
+- Si no encuentras un dato, usa null
+- Para edad usa número, no string
+- Devuelve SOLO el JSON, sin explicaciones
+"""
+                    }
+                ],
+                max_tokens=self.max_tokens,
+                temperature=0.1,
+                response_format={"type": "json_object"}
+            )
+            
+            content = response.choices[0].message.content
+            extracted_data = json.loads(content)
+            
+            # Validar que tenga los campos esperados
+            expected_fields = ["nombre", "cedula", "email", "provincia", "ciudad", "direccion", "telefono", "celular", "edad"]
+            
+            # Asegurar que todos los campos existan
+            for field in expected_fields:
+                if field not in extracted_data:
+                    extracted_data[field] = None
+            
+            # Limpiar campos no esperados
+            filtered_data = {field: extracted_data.get(field) for field in expected_fields}
+            
+            processing_time = time.time() - start_time
+            logger.info(f"Extracción de datos personales completada en {processing_time:.2f} segundos")
+            
+            # Agregar metadatos
+            filtered_data["_metadata"] = {
+                "processing_time": processing_time,
+                "model_used": self.model,
+                "tokens_used": response.usage.total_tokens if response.usage else None,
+                "extraction_type": "personal_data"
+            }
+            
+            return filtered_data
+            
+        except json.JSONDecodeError as e:
+            logger.error(f"Error decodificando JSON de OpenAI: {e}")
+            raise OpenAIError(f"Respuesta inválida de OpenAI: {e}")
+        except Exception as e:
+            logger.error(f"Error en OpenAI API: {e}")
+            raise OpenAIError(f"Error comunicándose con OpenAI: {e}")
+
     def test_connection(self) -> bool:
         """
         Prueba la conexión con OpenAI API.

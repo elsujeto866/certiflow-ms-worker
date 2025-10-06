@@ -3,7 +3,7 @@ Rutas principales de la API para el procesamiento de documentos.
 """
 from fastapi import APIRouter, UploadFile, File, HTTPException, Depends, Form
 from fastapi.responses import FileResponse
-from typing import Optional
+from typing import Optional, Dict, Any
 import time
 from datetime import datetime
 
@@ -72,6 +72,92 @@ async def upload_pdf(file: UploadFile = File(...)):
         raise HTTPException(status_code=500, detail="Error interno del servidor")
 
 
+@router.post("/extract-personal-data/", response_model=Dict[str, Any])
+async def extract_personal_data(file: UploadFile = File(..., description="Archivo PDF del cual extraer datos personales")):
+    """
+    Endpoint específico para extraer datos personales de un PDF.
+    Retorna únicamente: nombre, cédula, email, provincia, ciudad, dirección, teléfono, celular, edad
+    
+    Args:
+        file: Archivo PDF a procesar (required)
+        
+    Returns:
+        Dict con los datos personales extraídos en formato JSON
+        
+    Example:
+        curl -X POST "http://localhost:8000/api/v1/extract-personal-data/" \
+             -H "accept: application/json" \
+             -H "Content-Type: multipart/form-data" \
+             -F "file=@documento.pdf"
+    """
+    start_time = time.time()
+    
+    try:
+        # Validar que se recibió un archivo
+        if not file or not file.filename:
+            raise HTTPException(
+                status_code=400, 
+                detail="No se recibió ningún archivo. Asegúrate de enviar un archivo PDF en el campo 'file'."
+            )
+        
+        logger.info(f"Iniciando extracción de datos personales de {file.filename}")
+        
+        # Validar archivo
+        await validate_file(file)
+        content = await file.read()
+        
+        # Validar que el contenido no esté vacío
+        if not content:
+            raise HTTPException(
+                status_code=400,
+                detail="El archivo está vacío o no se pudo leer correctamente."
+            )
+        
+        if not pdf_service.validate_pdf(content):
+            raise HTTPException(status_code=400, detail="El archivo no es un PDF válido")
+        
+        # Extraer texto del PDF
+        logger.info("Extrayendo texto del PDF")
+        extracted_text = pdf_service.extract_text_from_pdf(content)
+        
+        # Procesar con OpenAI para extraer datos personales
+        logger.info("Extrayendo datos personales con IA")
+        personal_data = openai_service.extract_personal_data(extracted_text)
+        
+        processing_time = time.time() - start_time
+        logger.info(f"Extracción completada en {processing_time:.2f} segundos")
+        
+        return {
+            "success": True,
+            "data": {
+                "nombre": personal_data.get("nombre"),
+                "cedula": personal_data.get("cedula"), 
+                "email": personal_data.get("email"),
+                "provincia": personal_data.get("provincia"),
+                "ciudad": personal_data.get("ciudad"),
+                "direccion": personal_data.get("direccion"),
+                "telefono": personal_data.get("telefono"),
+                "celular": personal_data.get("celular"),
+                "edad": personal_data.get("edad")
+            },
+            "metadata": {
+                "processing_time": processing_time,
+                "filename": file.filename,
+                "timestamp": datetime.now().isoformat()
+            }
+        }
+        
+    except PDFProcessingError as e:
+        logger.error(f"Error procesando PDF: {e.message}")
+        raise HTTPException(status_code=400, detail=f"Error procesando PDF: {e.message}")
+    except OpenAIError as e:
+        logger.error(f"Error con OpenAI: {e.message}")
+        raise HTTPException(status_code=500, detail=f"Error procesando con IA: {e.message}")
+    except Exception as e:
+        logger.error(f"Error inesperado: {e}")
+        raise HTTPException(status_code=500, detail="Error interno del servidor")
+
+
 @router.post("/extract-data/", response_model=ProcessingResponse)
 async def extract_data(
     file: UploadFile = File(...),
@@ -107,9 +193,9 @@ async def extract_data(
         logger.info("Extrayendo texto del PDF")
         extracted_text = pdf_service.extract_text_from_pdf(content)
         
-        # Paso 2: Procesar con OpenAI
-        logger.info("Procesando con OpenAI")
-        structured_data = openai_service.extract_structured_data(extracted_text)
+        # Paso 2: Procesar con OpenAI - Extraer datos personales específicos
+        logger.info("Procesando con OpenAI para extraer datos personales")
+        structured_data = openai_service.extract_personal_data(extracted_text)
         
         # Crear objeto de respuesta
         extracted_data = ExtractedData(
@@ -199,3 +285,39 @@ async def list_templates():
     except Exception as e:
         logger.error(f"Error listando plantillas: {e}")
         raise HTTPException(status_code=500, detail="Error listando plantillas")
+
+
+@router.post("/test-upload/")
+async def test_upload(file: UploadFile = File(...)):
+    """
+    Endpoint de prueba para verificar que la subida de archivos funcione correctamente.
+    
+    Args:
+        file: Archivo a subir para prueba
+        
+    Returns:
+        dict: Información sobre el archivo recibido
+    """
+    try:
+        if not file or not file.filename:
+            return {
+                "success": False,
+                "error": "No se recibió ningún archivo",
+                "help": "Asegúrate de enviar un archivo en el campo 'file'"
+            }
+        
+        content = await file.read()
+        
+        return {
+            "success": True,
+            "filename": file.filename,
+            "content_type": file.content_type,
+            "file_size": len(content),
+            "message": "Archivo recibido correctamente"
+        }
+    except Exception as e:
+        return {
+            "success": False,
+            "error": str(e),
+            "help": "Revisa que el archivo se esté enviando correctamente"
+        }

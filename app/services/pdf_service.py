@@ -3,7 +3,6 @@ Servicio para procesar archivos PDF y extraer texto.
 """
 import PyPDF2
 from io import BytesIO
-from typing import str
 from app.models.exceptions import PDFProcessingError
 from app.core.logging import get_logger
 
