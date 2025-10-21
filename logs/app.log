@@ -1,0 +1,302 @@
+2025-10-20 12:12:47,329 - app.main - INFO - Iniciando Certiflow API Worker v1.0.0
+2025-10-20 12:12:47,329 - app.main - INFO - Aplicación iniciada correctamente
+2025-10-20 12:16:48,767 - app.api.routes - INFO - Iniciando extracción de datos personales de Registro_1401204316.pdf
+2025-10-20 12:16:48,767 - app.utils.file_utils - INFO - Archivo validado: Registro_1401204316.pdf (39559 bytes)
+2025-10-20 12:16:48,768 - app.api.routes - INFO - Extrayendo texto del PDF
+2025-10-20 12:16:48,768 - app.services.pdf_service - INFO - Iniciando extracción de texto del PDF
+2025-10-20 12:16:48,777 - app.services.pdf_service - INFO - Texto extraído exitosamente. Longitud: 4379 caracteres
+2025-10-20 12:16:48,778 - app.api.routes - INFO - Extrayendo datos personales con IA
+2025-10-20 12:16:48,778 - app.services.openai_service - INFO - Iniciando extracción de datos personales con OpenAI
+2025-10-20 12:16:52,156 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-20 12:16:52,170 - app.services.openai_service - INFO - Extracción de datos personales completada en 3.39 segundos
+2025-10-20 12:16:52,170 - app.api.routes - INFO - Extracción completada en 3.40 segundos
+2025-10-20 12:28:40,370 - app.main - INFO - Cerrando aplicación...
+2025-10-20 12:28:40,855 - app.main - INFO - Iniciando Certiflow API Worker v1.0.0
+2025-10-20 12:29:22,330 - app.main - INFO - Cerrando aplicación...
+2025-10-20 12:29:22,840 - app.main - INFO - Iniciando Certiflow API Worker v1.0.0
+2025-10-20 12:33:06,282 - app.main - INFO - Cerrando aplicación...
+2025-10-20 12:33:06,799 - app.main - INFO - Iniciando Certiflow API Worker v1.0.0
+2025-10-20 12:33:33,759 - app.main - INFO - Cerrando aplicación...
+2025-10-20 12:33:34,244 - app.main - INFO - Iniciando Certiflow API Worker v1.0.0
+2025-10-20 12:36:19,459 - app.main - INFO - Cerrando aplicación...
+2025-10-20 12:36:19,941 - app.main - INFO - Iniciando Certiflow API Worker v1.0.0
+2025-10-20 12:36:39,261 - app.main - INFO - Cerrando aplicación...
+2025-10-20 12:36:39,754 - app.main - INFO - Iniciando Certiflow API Worker v1.0.0
+2025-10-20 12:36:52,733 - app.main - INFO - Cerrando aplicación...
+2025-10-20 12:36:53,228 - app.main - INFO - Iniciando Certiflow API Worker v1.0.0
+2025-10-20 12:37:52,087 - app.main - INFO - Cerrando aplicación...
+2025-10-20 12:37:52,571 - app.main - INFO - Iniciando Certiflow API Worker v1.0.0
+2025-10-20 12:38:14,605 - app.main - INFO - Cerrando aplicación...
+2025-10-20 12:38:15,092 - app.main - INFO - Iniciando Certiflow API Worker v1.0.0
+2025-10-20 12:38:25,156 - app.main - INFO - Cerrando aplicación...
+2025-10-20 12:38:25,669 - app.main - INFO - Iniciando Certiflow API Worker v1.0.0
+2025-10-20 12:39:04,612 - app.main - INFO - Cerrando aplicación...
+2025-10-20 12:39:05,098 - app.main - INFO - Iniciando Certiflow API Worker v1.0.0
+2025-10-20 12:39:41,728 - app.main - INFO - Cerrando aplicación...
+2025-10-20 12:39:42,209 - app.main - INFO - Iniciando Certiflow API Worker v1.0.0
+2025-10-20 12:40:09,293 - app.main - INFO - Cerrando aplicación...
+2025-10-20 12:40:09,777 - app.main - INFO - Iniciando Certiflow API Worker v1.0.0
+2025-10-20 12:53:08,252 - app.main - INFO - Cerrando aplicación...
+2025-10-20 12:53:08,746 - app.main - INFO - Iniciando Certiflow API Worker v1.0.0
+2025-10-20 12:53:25,250 - app.main - INFO - Cerrando aplicación...
+2025-10-20 12:53:57,453 - app.main - INFO - Iniciando Certiflow API Worker v1.0.0
+2025-10-21 11:16:18,364 - app.main - INFO - Cerrando aplicación...
+2025-10-21 11:16:18,887 - app.main - INFO - Iniciando Certiflow API Worker v1.0.0
+2025-10-21 11:16:19,692 - app.main - INFO - Cerrando aplicación...
+2025-10-21 11:16:20,214 - app.main - INFO - Iniciando Certiflow API Worker v1.0.0
+2025-10-21 11:36:27,739 - app.main - INFO - Cerrando aplicación...
+2025-10-21 11:36:28,255 - app.main - INFO - Iniciando Certiflow API Worker v1.0.0
+2025-10-21 11:43:29,341 - app.main - INFO - Cerrando aplicación...
+2025-10-21 11:43:29,834 - app.main - INFO - Iniciando Certiflow API Worker v1.0.0
+2025-10-21 11:44:05,341 - app.main - INFO - Cerrando aplicación...
+2025-10-21 11:44:05,867 - app.main - INFO - Iniciando Certiflow API Worker v1.0.0
+2025-10-21 11:45:57,946 - app.main - INFO - Cerrando aplicación...
+2025-10-21 11:45:58,419 - app.main - INFO - Iniciando Certiflow API Worker v1.0.0
+2025-10-21 11:46:23,133 - app.api.routes - INFO - Iniciando extracción de datos personales de Registro_1401204316.pdf
+2025-10-21 11:46:23,133 - app.utils.file_utils - INFO - Archivo validado: Registro_1401204316.pdf (39559 bytes)
+2025-10-21 11:46:23,133 - app.api.routes - INFO - Procesando archivo con Orchestrator
+2025-10-21 11:46:23,134 - app.services.pdf_service - INFO - Iniciando extracción de texto del PDF
+2025-10-21 11:46:23,146 - app.services.pdf_service - INFO - Texto extraído exitosamente. Longitud: 4379 caracteres
+2025-10-21 11:46:23,146 - app.services.orchestrator - INFO - Texto extraído completo:
+--- Página 1 ---
+ 
+RESUMEN DEL REGISTRO DE PERSONAS 
+ 
+ORGANISMO EVALUADOR: VIVAS MACIAS JORGE SEBASTIAN
+FECHA Y HORA: 26-01-2025 12:53:58
+ 
+ 
+CÉDULA DE IDENTIDAD: 1401204316
+NOMBRE DEL PARTICIPANTE: JUWA CHINKIAS WILSON PATRICIO
+EDAD: 28
+GÉNERO: HOMBRE
+FORMACIÓN ARTESANO: N
+INSTRUCCIÓN REGISTRO CIVIL: BACHILLERATO
+INSTRUCCIÓN SELECCIONADA: SECUNDARIA
+PROVINCIA: MORONA SANTIAGO
+CANTÓN: GUALAQUIZA
+PARROQUIA: GUALAQUIZA
+DIRECCIÓN DEL DOMICILIO: GUALOQUOZA
+CORREO ELECTRÓNCO: wilson-juva@gmail.com
+TELÉFONO: 02-2222222
+CELULAR: 0980800088
+TIENE DISCAPACIDAD:NO
+TIPO DE DISCAPACIDAD: N/A
+DESEA SER PARTE DE SOCIO EMPLEO: NO
+ 
+NOMBRE DEL ESQUEMA: PREVENCIÓN DE RIESGOS LABORALES EN ACTIVIDADES DE ALTO
+RIESGO: CONSTRUCCIÓN Y OBRA CIVIL
+FECHA PARA RENDIR LA PRUEBA: 26-01-2025
+HORA PARA RENDIR LA PRUEBA: 15:00
+COSTO DE LA CERTIFICACIÓN: 25.0
+LUGAR DONDE DESEA SER EXAMINADO: TALLER OEC
+NOMBRE EMPRESA/LUGAR: SVM GROUP
+DIRECCIÓN EMPRESA/LUGAR: EMILIO BUSTAMANTE
+TELÉFONO EMPRESA/LUGAR: 02-22222221. DATOS GENERALES
+2. DATOS DE LA CERTIFICACIÓN - ESQUEMA/UNIDAD DE COMPETENCIA
+ ___________________________________________________________________________
+Pág. 1
+--- Página 2 ---
+ 
+ 
+ 
+NOMBRE DEL ANALISTA / RESPONSABLE PCC: GILER CUSME ANA MARINA
+NOMBRE DEL ESQUEMA: PREVENCIÓN DE RIESGOS LABORALES EN ACTIVIDADES DE ALTO
+RIESGO: CONSTRUCCIÓN Y OBRA CIVIL
+ 
+CÉDULA DE IDENTIDAD: 1401204316
+AUTOIDENTIFICACIÓN: Mestizo
+ 
+¿ACTUALMENTE USTED TRABAJA? SI
+ 
+TIPO DE OCUPACIÓN: Empleado/Obrero Privado
+EN LA OCUPACIÓN SELECCIONADA SE ENCUENTRA: Con contrato permanente/estable o de planta
+¿INDIQUE CUANTAS HORAS HABITUALMENTE TRABAJA A LA SEMANA? 40
+ÁREA/DEPARTAMENTO DONDE TRABAJA:
+PRODUCTIVA: SI
+ 
+RECIBE POR PARTE DE SU PATRONO O EMPLEADOR:
+¿HA TENIDO USTED ALGÚN CAMBIO DE PUESTO O ASCENSO EN SU EMPRESA?: NO
+¿ESTÁ SATISFECHO CON EL EMPLEO ACTUAL?: SI
+¿SE SIENTE AGOTADO, DEBIDO A LA CARGA DE TRABAJO?: NO
+¿SUS COMPAÑEROS RESPETAN SU TRABAJO Y SUS CAPACIDADES?: SI
+¿SUS JEFES RECONOCEN LA CALIDAD DE SU TRABAJO?: SI
+¿EN SU TRABAJO EXISTEN RIESGOS LABORALES?: SI
+¿DESEARÍA CAMBIAR DE TRABAJO?: NO
+ 
+¿USTED ES JEFE DE HOGAR?: SI
+¿USTED O SU FAMILIA POSEE UN SEGURO MÉDICO?: NO
+¿TIENE HIJOS?: NO3. EXPERIENCIA LABORAL EN EL ESQUEMA
+No.NOMBRE DE
+LA EMPRESATIEMPO EN
+MESESACTIVIDADES REALIZADAS
+1CDECOM 12 OBRERO
+4. INFORMACIÓN DETALLADA
+SECCIÓN 1. DATOS GENERALES DEL ENCUESTADO
+SECCIÓN 2. DATOS DE EMPLEABILIDAD
+2.1 CIUDADANOS/AS OCUPADOS/AS
+2.1.2 CONDICIONES LABORALES
+SECCIÓN 3. DATOS DE CONDICIONES DE VIDA
+ ___________________________________________________________________________
+Pág. 2
+--- Página 3 ---
+¿CUÁNTOS HIJOS?: N/A
+HIJOS MAYORES A 3 AÑOS Y MENORES DE 18 AÑOS: N/A
+¿ASISTEN ACTUALMENTE A ALGUNA INSTITUCIÓN EDUCATIVA?: N/A
+¿CUÁNTAS PERSONAS SON MIEMBROS DE SU HOGAR?: 4
+¿SU VIVIENDA ES?:
+ARRENDADA: SI
+SERVICIOS BÁSICOS A LOS QUE TIENE ACCESO USTED Y SU FAMILIA:
+LUZ: SI
+AGUA: SI
+TELÉFONO: SI
+INTERNET: SI
+ ___________________________________________________________________________
+Pág. 3
+--- Página 4 ---
+ 
+DECLARO QUE: toda la información que consigno en esta solicitud; es fidedigna y responde a la verdad,
+asumiendo la responsabilidad legal que pudiera derivarse por el suministro de datos falsos.
+ 
+ 
+________________________________________
+(f) JUWA CHINKIAS WILSON PATRICIO
+ 
+ 
+ 
+A los 26 dias del mes de enero de 2025, yo, JUWA CHINKIAS WILSON PATRICIO, con C.C. # 1401204316
+, autorizo al Organismo Evaluador de la Conformidad (OEC): VIVAS MACIAS JORGE SEBASTIAN,
+reconocido para que recolecte, almacene, use y administre mis datos personales, los cuales han sido
+suministrados con la finalidad de desarrollar su gestión y prestación de servicios.
+ 
+Asimismo, autorizo que el OEC: VIVAS MACIAS JORGE SEBASTIAN envíe mis datos personales (nombres
+completos, número de cédula de ciudadanía, perfil certificado, ciudad y fecha de emisión de la certificación) a
+la entidad encargada para que ésta pueda usarlos, administrarlos y divulgarlos en medios electrónicos de
+acceso público; y, consiento que mis datos personales sean tratados conforme a lo previsto en el Reglamento
+a la Ley del Sistema Nacional de Registro de Datos Públicos.
+ 
+ 
+________________________________________
+(f) JUWA CHINKIAS WILSON PATRICIODECLARACIÓN DE LA INFORMACIÓN
+ACEPTACIÓN DE USO DE DATOS PERSONALES
+ ___________________________________________________________________________
+Pág. 4
+2025-10-21 11:46:23,147 - app.services.openai_service - INFO - Iniciando extracción de datos con OpenAI
+2025-10-21 11:46:27,054 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 11:46:27,079 - app.services.openai_service - INFO - Extracción completada en 3.93 segundos
+2025-10-21 11:46:27,079 - app.api.routes - INFO - Extracción completada en 3.95 segundos
+2025-10-21 11:56:21,443 - app.main - INFO - Cerrando aplicación...
+2025-10-21 12:09:44,143 - app.main - INFO - Iniciando Certiflow API Worker v1.0.0
+2025-10-21 12:11:12,858 - app.api.routes - INFO - Iniciando extracción de datos personales de Registro_1401204316.pdf
+2025-10-21 12:11:12,858 - app.utils.file_utils - INFO - Archivo validado: Registro_1401204316.pdf (39559 bytes)
+2025-10-21 12:11:12,858 - app.api.routes - INFO - Procesando archivo con Orchestrator
+2025-10-21 12:11:12,861 - app.services.pdf_service - INFO - Iniciando extracción de texto del PDF (pdfplumber)
+2025-10-21 12:11:12,946 - app.services.pdf_service - INFO - Texto extraído exitosamente. Longitud: 4337 caracteres
+2025-10-21 12:11:12,946 - app.services.orchestrator - INFO - Texto extraído completo:
+--- Página 1 ---
+RESUMEN DEL REGISTRO DE PERSONAS
+ORGANISMO EVALUADOR: VIVAS MACIAS JORGE SEBASTIAN
+FECHA Y HORA: 26-01-2025 12:53:58
+1. DATOS GENERALES
+CÉDULA DE IDENTIDAD: 1401204316
+NOMBRE DEL PARTICIPANTE: JUWA CHINKIAS WILSON PATRICIO
+EDAD: 28
+GÉNERO: HOMBRE
+FORMACIÓN ARTESANO: N
+INSTRUCCIÓN REGISTRO CIVIL: BACHILLERATO
+INSTRUCCIÓN SELECCIONADA: SECUNDARIA
+PROVINCIA: MORONA SANTIAGO
+CANTÓN: GUALAQUIZA
+PARROQUIA: GUALAQUIZA
+DIRECCIÓN DEL DOMICILIO: GUALOQUOZA
+CORREO ELECTRÓNCO: wilson-juva@gmail.com
+TELÉFONO: 02-2222222
+CELULAR: 0980800088
+TIENE DISCAPACIDAD:NO
+TIPO DE DISCAPACIDAD: N/A
+DESEA SER PARTE DE SOCIO EMPLEO: NO
+2. DATOS DE LA CERTIFICACIÓN - ESQUEMA/UNIDAD DE COMPETENCIA
+NOMBRE DEL ESQUEMA: PREVENCIÓN DE RIESGOS LABORALES EN ACTIVIDADES DE ALTO
+RIESGO: CONSTRUCCIÓN Y OBRA CIVIL
+FECHA PARA RENDIR LA PRUEBA: 26-01-2025
+HORA PARA RENDIR LA PRUEBA: 15:00
+COSTO DE LA CERTIFICACIÓN: 25.0
+LUGAR DONDE DESEA SER EXAMINADO: TALLER OEC
+NOMBRE EMPRESA/LUGAR: SVM GROUP
+DIRECCIÓN EMPRESA/LUGAR: EMILIO BUSTAMANTE
+TELÉFONO EMPRESA/LUGAR: 02-2222222
+___________________________________________________________________________
+Pág. 1
+--- Página 2 ---
+3. EXPERIENCIA LABORAL EN EL ESQUEMA
+No. NOMBRE DE TIEMPO EN ACTIVIDADES REALIZADAS
+LA EMPRESA MESES
+1 CDECOM 12 OBRERO
+4. INFORMACIÓN DETALLADA
+NOMBRE DEL ANALISTA / RESPONSABLE PCC: GILER CUSME ANA MARINA
+NOMBRE DEL ESQUEMA: PREVENCIÓN DE RIESGOS LABORALES EN ACTIVIDADES DE ALTO
+RIESGO: CONSTRUCCIÓN Y OBRA CIVIL
+SECCIÓN 1. DATOS GENERALES DEL ENCUESTADO
+CÉDULA DE IDENTIDAD: 1401204316
+AUTOIDENTIFICACIÓN: Mestizo
+SECCIÓN 2. DATOS DE EMPLEABILIDAD
+¿ACTUALMENTE USTED TRABAJA? SI
+2.1 CIUDADANOS/AS OCUPADOS/AS
+TIPO DE OCUPACIÓN: Empleado/Obrero Privado
+EN LA OCUPACIÓN SELECCIONADA SE ENCUENTRA: Con contrato permanente/estable o de planta
+¿INDIQUE CUANTAS HORAS HABITUALMENTE TRABAJA A LA SEMANA? 40
+ÁREA/DEPARTAMENTO DONDE TRABAJA:
+PRODUCTIVA: SI
+2.1.2 CONDICIONES LABORALES
+RECIBE POR PARTE DE SU PATRONO O EMPLEADOR:
+¿HA TENIDO USTED ALGÚN CAMBIO DE PUESTO O ASCENSO EN SU EMPRESA?: NO
+¿ESTÁ SATISFECHO CON EL EMPLEO ACTUAL?: SI
+¿SE SIENTE AGOTADO, DEBIDO A LA CARGA DE TRABAJO?: NO
+¿SUS COMPAÑEROS RESPETAN SU TRABAJO Y SUS CAPACIDADES?: SI
+¿SUS JEFES RECONOCEN LA CALIDAD DE SU TRABAJO?: SI
+¿EN SU TRABAJO EXISTEN RIESGOS LABORALES?: SI
+¿DESEARÍA CAMBIAR DE TRABAJO?: NO
+SECCIÓN 3. DATOS DE CONDICIONES DE VIDA
+¿USTED ES JEFE DE HOGAR?: SI
+¿USTED O SU FAMILIA POSEE UN SEGURO MÉDICO?: NO
+¿TIENE HIJOS?: NO
+___________________________________________________________________________
+Pág. 2
+--- Página 3 ---
+¿CUÁNTOS HIJOS?: N/A
+HIJOS MAYORES A 3 AÑOS Y MENORES DE 18 AÑOS: N/A
+¿ASISTEN ACTUALMENTE A ALGUNA INSTITUCIÓN EDUCATIVA?: N/A
+¿CUÁNTAS PERSONAS SON MIEMBROS DE SU HOGAR?: 4
+¿SU VIVIENDA ES?:
+ARRENDADA: SI
+SERVICIOS BÁSICOS A LOS QUE TIENE ACCESO USTED Y SU FAMILIA:
+LUZ: SI
+AGUA: SI
+TELÉFONO: SI
+INTERNET: SI
+___________________________________________________________________________
+Pág. 3
+--- Página 4 ---
+DECLARACIÓN DE LA INFORMACIÓN
+DECLARO QUE: toda la información que consigno en esta solicitud; es fidedigna y responde a la verdad,
+asumiendo la responsabilidad legal que pudiera derivarse por el suministro de datos falsos.
+________________________________________
+(f) JUWA CHINKIAS WILSON PATRICIO
+ACEPTACIÓN DE USO DE DATOS PERSONALES
+A los 26 dias del mes de enero de 2025, yo, JUWA CHINKIAS WILSON PATRICIO, con C.C. # 1401204316
+, autorizo al Organismo Evaluador de la Conformidad (OEC): VIVAS MACIAS JORGE SEBASTIAN,
+reconocido para que recolecte, almacene, use y administre mis datos personales, los cuales han sido
+suministrados con la finalidad de desarrollar su gestión y prestación de servicios.
+Asimismo, autorizo que el OEC: VIVAS MACIAS JORGE SEBASTIAN envíe mis datos personales (nombres
+completos, número de cédula de ciudadanía, perfil certificado, ciudad y fecha de emisión de la certificación) a
+la entidad encargada para que ésta pueda usarlos, administrarlos y divulgarlos en medios electrónicos de
+acceso público; y, consiento que mis datos personales sean tratados conforme a lo previsto en el Reglamento
+a la Ley del Sistema Nacional de Registro de Datos Públicos.
+________________________________________
+(f) JUWA CHINKIAS WILSON PATRICIO
+___________________________________________________________________________
+Pág. 4
+2025-10-21 12:11:12,947 - app.services.openai_service - INFO - Iniciando extracción de datos con OpenAI
+2025-10-21 12:11:17,665 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-21 12:11:17,687 - app.services.openai_service - INFO - Extracción completada en 4.74 segundos
+2025-10-21 12:11:17,687 - app.api.routes - INFO - Extracción completada en 4.83 segundos

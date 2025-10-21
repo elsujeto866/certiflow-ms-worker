@@ -12,10 +12,38 @@ from app.core.logging import setup_logging, get_logger
 from app.api.routes import router
 from app.models.schemas import HealthResponse, ErrorResponse
 from app.models.exceptions import CertiflowException
+from contextlib import asynccontextmanager
 
 # Configurar logging
 setup_logging()
 logger = get_logger(__name__)
+
+
+# Lifespan handler (replaces deprecated @app.on_event startup/shutdown)
+@asynccontextmanager
+async def lifespan(app):
+    """Context manager that runs at application startup and shutdown.
+
+    - Crea directorios necesarios
+    - Emite warnings si faltan configuraciones críticas (p.ej. OPENAI_API_KEY)
+    """
+    logger.info(f"Iniciando {settings.app_name} v{settings.version}")
+
+    # Crear directorios necesarios
+    import os
+    os.makedirs("uploads", exist_ok=True)
+    os.makedirs("output", exist_ok=True)
+    os.makedirs("templates", exist_ok=True)
+    os.makedirs("logs", exist_ok=True)
+
+    # Validaciones iniciales opcionales
+    if not getattr(settings, "openai_api_key", None):
+        logger.warning("OPENAI_API_KEY no configurada. Algunas funcionalidades con OpenAI quedarán deshabilitadas.")
+
+    try:
+        yield
+    finally:
+        logger.info("Cerrando aplicación...")
 
 # Crear aplicación FastAPI
 app = FastAPI(
@@ -23,7 +51,8 @@ app = FastAPI(
     version=settings.version,
     description="Microservicio para procesar PDFs con IA y generar reportes Excel",
     docs_url="/docs",
-    redoc_url="/redoc"
+    redoc_url="/redoc",
+    lifespan=lifespan,
 )
 
 # Configurar CORS
@@ -94,25 +123,7 @@ async def health_check():
     )
 
 
-@app.on_event("startup")
-async def startup_event():
-    """Eventos a ejecutar al iniciar la aplicación."""
-    logger.info(f"Iniciando {settings.app_name} v{settings.version}")
-    
-    # Crear directorios necesarios
-    import os
-    os.makedirs("uploads", exist_ok=True)
-    os.makedirs("output", exist_ok=True)
-    os.makedirs("templates", exist_ok=True)
-    os.makedirs("logs", exist_ok=True)
-    
-    logger.info("Aplicación iniciada correctamente")
-
-
-@app.on_event("shutdown")
-async def shutdown_event():
-    """Eventos a ejecutar al cerrar la aplicación."""
-    logger.info("Cerrando aplicación...")
+# NOTE: startup/shutdown logic moved into the `lifespan` context manager above.
 
 
 if __name__ == "__main__":

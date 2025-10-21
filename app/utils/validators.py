@@ -215,7 +215,7 @@ def safe_get_nested_value(data: Dict[str, Any], key_path: str, default: Any = No
 
 
 def calculate_processing_stats(start_time: float, end_time: float, 
-                             input_size: int, output_size: int = None) -> Dict[str, Any]:
+                             input_size: int, output_size: int | None = None) -> Dict[str, Any]:
     """
     Calcula estadísticas de procesamiento.
     
